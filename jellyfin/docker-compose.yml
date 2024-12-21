@@ -1,0 +1,18 @@
+volumes:
+  config:
+  cache:
+  media:
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:10.10.3
+    container_name: jellyfin
+    volumes:
+      - config:/config
+      - cache:/cache
+      - type: bind
+        source: ./media
+        target: /media
+    restart: no
+    ports:
+      - "5080:8096"
