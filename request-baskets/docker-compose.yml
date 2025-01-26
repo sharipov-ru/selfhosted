@@ -1,0 +1,9 @@
+services:
+  request-baskets:
+    restart: no
+    image: darklynx/request-baskets:v1.2.3
+    container_name: request-baskets
+    environment:
+      TOKEN: ${REQUEST_BASKETS_TOKEN}
+    ports:
+      - "${REQUEST_BASKETS_PORT}:55555"
