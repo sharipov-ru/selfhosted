@@ -4,7 +4,7 @@ volumes:
 
 services:
   freshrss:
-    image: freshrss/freshrss:1.26.3-alpine
+    image: freshrss/freshrss:1.27.0-alpine
     container_name: freshrss
     hostname: freshrss.test
     restart: no
