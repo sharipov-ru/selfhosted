@@ -1,0 +1,20 @@
+services:
+  dns-server:
+    container_name: technitium-dns
+    hostname: technitium.test
+    image: technitium/dns-server:13.6.0
+    ports:
+      - "5380:5380/tcp"
+      - "53:53/udp"
+      - "53:53/tcp"
+    environment:
+      - DNS_SERVER_DOMAIN=dns-server
+      - DNS_SERVER_WEB_SERVICE_HTTP_PORT=5380
+    volumes:
+      - ./config:/etc/dns/
+    restart: unless-stopped
+    sysctls:
+      - net.ipv4.ip_local_port_range=1024 65000
+
+volumes:
+    config:
