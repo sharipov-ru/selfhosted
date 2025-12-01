@@ -5,7 +5,7 @@ volumes:
 
 services:
   jellyfin:
-    image: jellyfin/jellyfin:10.11.3
+    image: jellyfin/jellyfin:10.11.4
     container_name: jellyfin
     volumes:
       - config:/config
