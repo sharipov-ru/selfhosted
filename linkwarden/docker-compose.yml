@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    env_file: .env
+    restart: no
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+  linkwarden:
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+    restart: no
+    image: ghcr.io/linkwarden/linkwarden:v2.14.0
+    ports:
+      - 6080:3000
+    volumes:
+      - ./data:/data/data
+    depends_on:
+      - postgres
